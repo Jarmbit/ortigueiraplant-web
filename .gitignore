@@ -1,0 +1,45 @@
+# WordPress core — no versionado
+wp-admin/
+wp-includes/
+wp-login.php
+wp-blog-header.php
+wp-comments-post.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+index.php
+license.txt
+licencia.txt
+readme.html
+wp-activate.php
+
+# Credenciales — nunca en git
+wp-config.php
+.env
+
+# Uploads y cache — no versionados
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/litespeed/
+wp-content/wc-logs/
+
+# Plugins de terceros — instalar via WP admin
+wp-content/plugins/
+
+# Logs y temporales
+error_log
+*.log
+core.*
+.litespeed_*
+
+# macOS
+.DS_Store
+
+# Temas de terceros no modificados (instalar via WP admin)
+wp-content/themes/twenty*/
