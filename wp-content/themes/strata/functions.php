@@ -63,7 +63,7 @@ include_once('includes/font_awesome/font-awesome.php');
 include_once('includes/qode-seo.php');
 include_once('includes/helpers/plugins.php');
 /** Include the TGM_Plugin_Activation class. */
-require_once dirname( __FILE__ ) . '/includes/plugins/class-tgm-plugin-activation.php';
+@include_once dirname( __FILE__ ) . '/includes/plugins/class-tgm-plugin-activation.php';
 /* Include 3rd party plugins */
 include_once('includes/plugins/plugins-activation.php');
 include_once('widgets/relate_posts_widget.php');
@@ -75,7 +75,7 @@ include_once('widgets/call_to_action_widget.php');
 //does woocommerce function exists?
 if(function_exists("is_woocommerce")){
 		//include woocommerce configuration
-		require_once( 'woocommerce/woocommerce_configuration.php' );
+		@include_once( 'woocommerce/woocommerce_configuration.php' );
     //include cart dropdown widget
     include_once('widgets/woocommerce-dropdown-cart.php');
 }
@@ -840,4 +840,26 @@ function rewrite_rules_on_theme_activation() {
 }
 add_action( 'after_switch_theme', 'rewrite_rules_on_theme_activation' );
 
+
+// Fallback walker classes — originalmente en includes/nav_menu/qode-menu.php
+if (!class_exists('qode_type1_walker_nav_menu')) {
+    class qode_type1_walker_nav_menu extends Walker_Nav_Menu {
+        function start_lvl(&$output, $depth=0, $args=array()) {
+            $output .= '<ul class="second_level_drop">';
+        }
+        function end_lvl(&$output, $depth=0, $args=array()) {
+            $output .= '</ul>';
+        }
+    }
+}
+if (!class_exists('qode_type2_walker_nav_menu')) {
+    class qode_type2_walker_nav_menu extends Walker_Nav_Menu {
+        function start_lvl(&$output, $depth=0, $args=array()) {
+            $output .= '<ul class="second_level_drop">';
+        }
+        function end_lvl(&$output, $depth=0, $args=array()) {
+            $output .= '</ul>';
+        }
+    }
+}
 ?>
